@@ -1,0 +1,675 @@
+/* Universal Box-Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Arial', sans-serif; /* Specified a common sans-serif font */
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Header and Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #252525;
+    padding: 0 5%; /* Use percentage for responsive padding */
+    position: sticky; /* Make nav sticky */
+    top: 0;
+    z-index: 1000; /* Ensure nav is above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px; /* Slightly reduced margin for better spacing */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transform for subtle hover effect */
+    display: block; /* Make links block for better click area */
+    padding: 5px 0;
+}
+
+nav ul li a:hover {
+    color: rgb(118, 118, 172);
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+.left {
+    font-size: 1.8rem; /* Increased font size for brand */
+    font-weight: bold;
+    color: white;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1001; /* Above nav links when active */
+}
+
+.hamburger .bar {
+    width: 28px; /* Slightly larger bars */
+    height: 3px;
+    background-color: white;
+    margin: 5px 0; /* Increased margin */
+    transition: 0.4s ease;
+    border-radius: 2px;
+}
+
+/* Hamburger animation (optional, but good for UX) */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Navigation Menu */
+nav ul.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #252525;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.3s ease-out forwards; /* Simple slide-down animation */
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Sections Styling */
+section {
+    padding: 80px 5%; /* Consistent padding for sections */
+    margin: auto;
+    max-width: 1200px; /* Max width for content readability */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 50px auto;
+    width: 80%;
+}
+
+.section-title {
+    font-size: 3.2rem; /* Slightly larger title */
+    text-align: center;
+    margin-bottom: 50px;
+    color: white; /* Highlight section titles */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+/* First Section (Home) */
+.firstSection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Fill remaining viewport height */
+    padding-top: 0; /* Remove top padding for better alignment */
+    padding-bottom: 0;
+}
+
+.leftSection {
+    font-size: 3.5rem; /* Larger hero text */
+    flex: 1; /* Allow it to grow */
+    max-width: 600px; /* Control max width */
+}
+
+.leftSection div:nth-child(2) { /* Web Developer text */
+    font-size: 2.5rem;
+    color: #ccc;
+    margin-top: 10px;
+}
+
+.para {
+    font-size: 1.5rem;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+.rightSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightSection img {
+    width: 350px; /* Slightly adjusted size */
+    height: 350px;
+    object-fit: fill;
+    border-radius: 50%;
+    border: 5px solid rgb(128, 74, 180); /* Purple border */
+    box-shadow: 0 0 20px rgba(128, 74, 180, 0.6); /* Glow effect */
+    transition: transform 0.3s ease;
+}
+
+.rightSection img:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+.purple {
+    color: rgb(128, 74, 180);
+}
+
+
+/* About Section */
+.about-section {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Increased gap */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.about-left {
+    flex: 1;
+    min-width: 280px; /* Ensure minimum width */
+    text-align: right;
+    padding-right: 30px; /* More padding */
+    border-right: 2px solid rgba(255, 255, 255, 0.2); /* Thicker, softer border */
+    position: relative;
+}
+
+.about-left h2 {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.2; /* Better line height */
+    position: sticky; /* Make about title sticky on scroll for larger screens */
+    top: 100px; /* Adjust based on header height */
+}
+
+.about-right {
+    flex: 2;
+    min-width: 320px;
+    padding-left: 30px;
+    font-size: 1.15em; /* Slightly larger font */
+    color: #ddd;
+    max-width: 700px;
+}
+
+.about-right p {
+    margin-bottom: 1.5em; /* More space between paragraphs */
+}
+
+
+/* Projects Section - Carousel */
+.carousel-container {
+    position: relative;
+    max-width: 800px; /* Increased max-width for carousel */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.6s ease-in-out; /* Slower, smoother transition */
+}
+
+.carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.hover-card {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Increased height for project cards */
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hover-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease; /* Slower transition for image */
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Darker overlay */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    padding: 20px;
+    transition: opacity 0.5s ease; /* Slower transition for overlay */
+}
+
+.hover-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.hover-card:hover img {
+    transform: scale(1.15); /* More pronounced zoom on hover */
+}
+
+.card-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.card-overlay h2 a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-overlay h2 a:hover {
+    color: rgb(118, 118, 172);
+    text-decoration: underline;
+}
+
+.card-overlay p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker buttons */
+    color: white;
+    border: none;
+    padding: 12px 18px; /* Larger buttons */
+    cursor: pointer;
+    font-size: 2rem; /* Larger arrow icons */
+    z-index: 10;
+    border-radius: 8px; /* More rounded buttons */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.05); /* Pop effect on hover */
+}
+
+.carousel-button.prev {
+    left: 15px;
+}
+
+.carousel-button.next {
+    right: 15px;
+}
+
+
+/* Contact Section */
+.contactSection {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.contact-form {
+    max-width: 600px; /* Increased max width for form */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* More space between form elements */
+    background-color: #252525; /* Form background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 15px; /* More padding inside inputs */
+    border: 1px solid #444; /* Soft border */
+    border-radius: 6px;
+    font-size: 1.1rem;
+    background-color: #333; /* Darker input background */
+    color: white;
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: rgb(128, 74, 180); /* Highlight on focus */
+    box-shadow: 0 0 8px rgba(128, 74, 180, 0.5);
+}
+
+.contact-form textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px;
+}
+
+.contact-form button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: rgb(128, 74, 180);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background-color: rgb(108, 54, 160);
+    transform: translateY(-2px); /* Lift button on hover */
+}
+
+
+/* Footer */
+footer {
+    background: #1a1a1a; /* Darker footer */
+    color: #bbb; /* Softer text color */
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9rem;
+    border-top: 1px solid #333;
+}
+
+/* Scroll to Top Button */
+#scrollBtn {
+    display: none;
+    position: fixed;
+    bottom: 25px; /* Slightly less from bottom */
+    right: 25px; /* Slightly less from right */
+    z-index: 999; /* Ensure it's on top */
+    font-size: 24px; /* Larger arrow */
+    background-color: #6a00f4;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    width: 50px; /* Fixed width and height for perfect circle */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+#scrollBtn:hover {
+    background-color: #5000c9;
+    transform: translateY(-3px); /* Lift effect */
+}
+
+#scrollBtn:active {
+    transform: translateY(0); /* Press effect */
+}
+
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and larger phones (768px - 1024px) */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2.8rem;
+    }
+
+    .firstSection {
+        flex-direction: column;
+        text-align: center;
+        margin: 60px 0;
+    }
+
+    .leftSection {
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
+    .para {
+        font-size: 1.3rem;
+    }
+
+    .rightSection img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-left,
+    .about-right {
+        text-align: left;
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 25px;
+    }
+
+    .about-left h2 {
+        font-size: 3rem;
+        position: static; /* Remove sticky on smaller screens */
+        text-align: center; /* Center align title */
+    }
+
+    .about-right {
+        padding-top: 25px;
+        font-size: 1.05em;
+    }
+
+    .carousel-container {
+        max-width: 90%;
+    }
+
+    .hover-card {
+        height: 300px;
+    }
+
+    .carousel-button {
+        padding: 10px 15px;
+        font-size: 1.8rem;
+    }
+
+    .contact-form {
+        max-width: 90%;
+    }
+}
+
+/* Smaller phones (up to 767px) */
+@media (max-width: 767px) {
+    nav {
+        padding: 0 15px;
+    }
+
+    nav ul {
+        display: none; /* Hidden by default */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger */
+    }
+
+    .left {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+
+    .firstSection {
+        margin: 30px 0;
+        min-height: auto; /* Allow content to dictate height */
+    }
+
+    .leftSection {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .leftSection div:nth-child(2) {
+        font-size: 1.8rem;
+    }
+
+    .para {
+        font-size: 1.1rem;
+    }
+
+    .rightSection img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .about-left h2 {
+        font-size: 2.5rem;
+    }
+
+    .about-right {
+        font-size: 1em;
+    }
+
+    .hover-card {
+        height: 250px;
+    }
+
+    .card-overlay h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-overlay p {
+        font-size: 0.95rem;
+    }
+
+    .carousel-button {
+        padding: 8px 12px;
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1rem;
+    }
+
+    .contact-form button {
+        font-size: 1.1rem;
+    }
+
+    #scrollBtn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Very small screens (up to 480px) */
+@media (max-width: 480px) {
+    section {
+        padding: 40px 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .leftSection {
+        font-size: 2rem;
+    }
+
+    .leftSection div:nth-child(2) {
+        font-size: 1.5rem;
+    }
+
+    .para {
+        font-size: 0.95rem;
+    }
+
+    .rightSection img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-left h2 {
+        font-size: 2rem;
+    }
+
+    .about-right {
+        font-size: 0.9rem;
+    }
+
+    .hover-card {
+        height: 200px;
+    }
+
+    .card-overlay h2 {
+        font-size: 1.3rem;
+    }
+
+    .card-overlay p {
+        font-size: 0.85rem;
+    }
+
+    .carousel-button {
+        font-size: 1.2rem;
+        padding: 6px 10px;
+    }
+}
